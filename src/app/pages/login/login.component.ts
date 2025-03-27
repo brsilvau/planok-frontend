@@ -1,4 +1,3 @@
-// src/app/pages/login/login.component.ts
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -20,7 +19,10 @@ export class LoginComponent {
 
   login(): void {
     this.authService.login({username: this.username, password: this.password}).subscribe({
-      next: () => this.router.navigate(['/projects']),
+      next: (response: any) => {
+        localStorage.setItem('token', response.access);
+        this.router.navigate(['/projects']);
+      },
       error: () => this.errorMessage = 'Credenciales inválidas. Intenta nuevamente.'
     });
   }

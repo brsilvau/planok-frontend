@@ -8,8 +8,6 @@ import { ProjectListComponent } from './pages/project-list/project-list.componen
 import { ProjectCreateComponent } from './pages/project-create/project-create.component';
 import { ProjectEditComponent } from './pages/project-edit/project-edit.component';
 import { LoginComponent } from './pages/login/login.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -25,7 +23,6 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     FormsModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
