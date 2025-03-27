@@ -1,0 +1,168 @@
+.project-list-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #222;
+  }
+  
+  .search-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .search-input {
+    width: 300px;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-input:focus {
+    border-color: #007bff;
+  }
+  
+  .search-button,
+  .create-button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-button:hover,
+  .create-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .projects-section {
+    overflow-x: auto;
+  }
+  
+  .project-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .project-table th,
+  .project-table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+  
+  .project-table th {
+    background-color: #f8f8f8;
+    font-weight: 600;
+  }
+  
+  .project-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .project-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Botón para Editar */
+  .edit-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    margin-right: 0.5rem;
+  }
+  
+  .edit-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Botón para Ver Detalle */
+  .detail-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #17a2b8;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    margin-right: 0.5rem;
+  }
+  
+  .detail-button:hover {
+    background-color: #138496;
+  }
+  
+  /* Botón para Eliminar */
+  .delete-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  .pagination-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  
+  .pagination {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .pagination button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination button:hover {
+    background-color: #0056b3;
+  }
+  
+  .pagination button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }

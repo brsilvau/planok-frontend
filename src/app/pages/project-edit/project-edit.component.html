@@ -1,0 +1,40 @@
+<div class="edit-project-container">
+  <h1>Editar Proyecto</h1>
+  <form (ngSubmit)="actualizarProyecto()" class="edit-project-form">
+    <div class="form-group">
+      <label for="nombre">Nombre del proyecto:</label>
+      <input type="text" id="nombre" name="nombre" [(ngModel)]="project!.nombre" placeholder="Nombre del proyecto" required>
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" name="descripcion" [(ngModel)]="project!.descripcion" placeholder="Descripción del proyecto" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="ubicacion">Ubicación:</label>
+      <input type="text" id="ubicacion" name="ubicacion" [(ngModel)]="project!.ubicacion" placeholder="Ubicación" required>
+    </div>
+
+    <div class="form-group">
+      <label for="fecha_inicio">Fecha de inicio:</label>
+      <input type="date" id="fecha_inicio" name="fecha_inicio" [(ngModel)]="project!.fecha_inicio" required>
+    </div>
+
+    <div class="form-group">
+      <label for="fecha_fin">Fecha de finalización:</label>
+      <input type="date" id="fecha_fin" name="fecha_fin" [(ngModel)]="project!.fecha_fin" required>
+    </div>
+
+    <div class="form-group">
+      <label for="estado">Estado:</label>
+      <select id="estado" name="estado" [(ngModel)]="project!.estado" required>
+        <option *ngFor="let state of this.projectStates" [value]="state" [selected]="project!.estado">
+          {{ state }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="update-button">Actualizar</button>
+  </form>
+</div>

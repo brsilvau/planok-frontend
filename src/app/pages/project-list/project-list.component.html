@@ -1,0 +1,70 @@
+<div class="project-list-page">
+  <header>
+    <h1>Listado de Proyectos</h1>
+  </header>
+
+  <section class="search-section">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Buscar proyecto..."
+      [(ngModel)]="searchTerm"
+    />
+    <button class="search-button" (click)="buscar()">Buscar</button>
+    <button class="create-button" [routerLink]="['/projects/new']">
+      Crear Proyecto
+    </button>
+  </section>
+
+  <section class="projects-section">
+    <table class="project-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Ubicación</th>
+          <th>Fecha Inicio</th>
+          <th>Fecha Fin</th>
+          <th>Estado</th>
+          <th>Fecha Creación</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects">
+          <td>{{ project.nombre }}</td>
+          <td>{{ project.descripcion }}</td>
+          <td>{{ project.ubicacion }}</td>
+          <td>{{ project.fecha_inicio | date:'dd-MM-yyyy' }}</td>
+          <td>{{ project.fecha_fin | date:'dd-MM-yyyy' }}</td>
+          <td>{{ project.estado }}</td>
+          <td>{{ project.fecha_creacion | date:'dd-MM-yyyy' }}</td>
+          <td>
+            <button
+              class="edit-button"
+              [routerLink]="['/projects', project.id, 'edit']"
+            >
+              Editar
+            </button>
+            <button
+              class="detail-button"
+              [routerLink]="['/projects', project.id, 'detail']"
+            >
+              Ver Detalle
+            </button>
+            <button class="delete-button" (click)="eliminarProyecto(project.id)">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="pagination-section">
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+    </div>
+  </section>
+</div>
