@@ -1,42 +1,78 @@
 <div class="project-detail-container" *ngIf="project">
-    <h1>Detalle del Proyecto</h1>
-    
-    <section class="project-info">
-      <h2>{{ project.nombre }}</h2>
-      <p><strong>Descripción:</strong> {{ project.descripcion }}</p>
-      <p><strong>Ubicación:</strong> {{ project.ubicacion }}</p>
-      <p>
-        <strong>Fecha de inicio:</strong>
-        {{ project.fecha_inicio | date:'dd-MM-yyyy' }}
-      </p>
-      <p>
-        <strong>Fecha de finalización:</strong>
-        {{ project.fecha_fin | date:'dd-MM-yyyy' }}
-      </p>
-      <p><strong>Estado:</strong> {{ project.estado }}</p>
-    </section>
+  <button class="back-button" [routerLink]="['/projects']">Volver a Proyectos</button>
+  <h1>Detalle del Proyecto</h1>
   
-    <section class="units-section" *ngIf="project.unidades && project.unidades.length">
-      <h3>Unidades del Proyecto</h3>
-      <table class="units-table">
-        <thead>
-          <tr>
-            <th>Número de Unidad</th>
-            <th>Tipo</th>
-            <th>Metraje</th>
-            <th>Precio</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let unit of project.unidades">
-            <td>{{ unit.numero_unidad }}</td>
-            <td>{{ unit.tipo_unidad }}</td>
-            <td>{{ unit.metraje_cuadrado }}mt2</td>
-            <td>${{ unit.precio_venta }}</td>
-            <td>{{ unit.estado }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+  <section class="project-info">
+    <h2>{{ project.nombre }}</h2>
+    <p><strong>Descripción:</strong> {{ project.descripcion }}</p>
+    <p><strong>Ubicación:</strong> {{ project.ubicacion }}</p>
+    <p>
+      <strong>Fecha de inicio:</strong>
+      {{ project.fecha_inicio | date:'dd-MM-yyyy' }}
+    </p>
+    <p>
+      <strong>Fecha de finalización:</strong>
+      {{ project.fecha_fin | date:'dd-MM-yyyy' }}
+    </p>
+    <p><strong>Estado:</strong> {{ project.estado }}</p>
+  </section>
+
+  <section class="units-section" *ngIf="project.unidades && project.unidades.length">
+    <h3>Unidades del Proyecto</h3>
+    <table class="units-table">
+      <thead>
+        <tr>
+          <th>Número de Unidad</th>
+          <th>Tipo</th>
+          <th>Metraje</th>
+          <th>Precio</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let unit of project.unidades">
+          <td>{{ unit.numero_unidad }}</td>
+          <td>{{ unit.tipo_unidad }}</td>
+          <td>{{ unit.metraje_cuadrado }}mt2</td>
+          <td>${{ unit.precio_venta }}</td>
+          <td>{{ unit.estado }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="add-unit-section">
+    <h3>Agregar Nueva Unidad</h3>
+    <form (ngSubmit)="addUnit()" class="add-unit-form">
+      <div class="form-group">
+        <label for="numero_unidad">Número de Unidad:</label>
+        <input type="text" id="numero_unidad" name="numero_unidad" [(ngModel)]="newUnit.numero_unidad" placeholder="Ej: A-101" required>
+      </div>
+      <div class="form-group">
+        <label for="tipo_unidad">Tipo de Unidad:</label>
+        <select id="tipo_unidad" name="tipo_unidad" [(ngModel)]="newUnit.tipo_unidad" required>
+          <option *ngFor="let type of unitTypes" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="metraje_cuadrado">Metraje (m²):</label>
+        <input type="number" id="metraje_cuadrado" name="metraje_cuadrado" [(ngModel)]="newUnit.metraje_cuadrado" placeholder="Ej: 75" required>
+      </div>
+      <div class="form-group">
+        <label for="precio_venta">Precio de Venta:</label>
+        <input type="number" id="precio_venta" name="precio_venta" [(ngModel)]="newUnit.precio_venta" placeholder="Ej: 150000" required>
+      </div>
+      <div class="form-group">
+        <label for="estado_unidad">Estado:</label>
+        <select id="estado_unidad" name="estado_unidad" [(ngModel)]="newUnit.estado" required>
+          <option *ngFor="let state of unitStates" [value]="state">
+            {{ state }}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="add-unit-button">Agregar Unidad</button>
+    </form>
+  </section>
 </div>

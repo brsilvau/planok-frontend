@@ -79,3 +79,18 @@
   border-color: #007bff;
   outline: none;
 }
+
+.back-button {
+  padding: 0.5rem 1rem;
+  background-color: #6c757d;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}

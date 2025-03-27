@@ -4,6 +4,7 @@ import { Project } from '../../models/project.model';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
@@ -18,7 +19,10 @@ export class ProjectListComponent implements OnInit {
   totalPages: number = 1;
   pageSize: number = 10;
 
-  constructor(private projectService: ProjectService) {}
+  constructor(
+    private projectService: ProjectService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.buscar();
@@ -52,5 +56,10 @@ export class ProjectListComponent implements OnInit {
         this.buscar();
       });
     }
+  }
+  
+  logout(): void {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 }

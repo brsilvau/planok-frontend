@@ -1,5 +1,6 @@
-<h1>Crear Proyecto</h1>
-<form (ngSubmit)="crearProyecto()">
+<form class="project-create-container" (ngSubmit)="crearProyecto()">
+  <button class="back-button" [routerLink]="['/projects']">Volver a Proyectos</button>
+  <h1>Crear Proyecto</h1>
   <label for="nombre">Nombre del proyecto:</label>
   <input type="text" id="nombre" name="nombre" [(ngModel)]="project.nombre" required>
 
@@ -17,7 +18,7 @@
   
   <label for="estado">Estado:</label>
   <select id="estado" name="estado" [(ngModel)]="project.estado" required>
-    <option *ngFor="let state of this.projectStates" [value]="state">
+    <option *ngFor="let state of projectStates" [value]="state">
       {{ state }}
     </option>
   </select>

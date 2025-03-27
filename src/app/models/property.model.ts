@@ -9,4 +9,5 @@ export interface PropertyUnit {
     estado: UnitState;
     fecha_creacion: Date;
     clienteId?: string;
+    proyecto: string;
 }

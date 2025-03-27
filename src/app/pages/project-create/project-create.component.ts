@@ -1,16 +1,16 @@
-// src/app/pages/project-create/project-create.component.ts
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../models/project.model';
 import { ProjectState } from '../../models/enums';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-project-create',
   templateUrl: './project-create.component.html',
   styleUrls: ['./project-create.component.scss'],
-  imports: [FormsModule]
+  imports: [FormsModule, CommonModule, RouterModule]
 })
 export class ProjectCreateComponent {
   project: Project = {
@@ -25,8 +25,7 @@ export class ProjectCreateComponent {
     unidades: []
   };
 
-  projectStates = ['a','b'];
-
+  projectStates: ProjectState[] = [];
 
   constructor(
     private projectService: ProjectService,
@@ -38,8 +37,8 @@ export class ProjectCreateComponent {
   }
 
   crearProyecto(): void {
-    this.projectService.createProject(this.project).subscribe(response => {
-      this.router.navigate(['/projects']);
+    this.projectService.createProject(this.project).subscribe(createdProject  => {
+      this.router.navigate(['/projects', createdProject.id, 'detail']);
     });
   }
 }
